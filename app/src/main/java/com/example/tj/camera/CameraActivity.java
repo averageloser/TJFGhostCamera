@@ -61,7 +61,7 @@ public class CameraActivity extends AppCompatActivity implements TextureView.Sur
         boo = BitmapFactory.decodeResource(getResources(), R.drawable.boo);
 
         booPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        booPaint.setAlpha(50);
+        booPaint.setAlpha(55);
 
         prefs = getPreferences(Context.MODE_PRIVATE);
 
@@ -159,6 +159,7 @@ public class CameraActivity extends AppCompatActivity implements TextureView.Sur
                 //Save the image to external file storage.
                 File externalStorage = Environment.getExternalStorageDirectory();
 
+                //This is not such a great way to generate a filename.  Append the date to the image, instead.
                 File pictureSaved = new File(externalStorage.getPath() + "/" + "booimage" + count.getAndIncrement() + ".jpg");
 
                 try {
@@ -175,7 +176,7 @@ public class CameraActivity extends AppCompatActivity implements TextureView.Sur
             protected void onPostExecute(Void aVoid) {
                 saving = false;
 
-                Toast.makeText(CameraActivity.this, "Image Saved", Toast.LENGTH_LONG);
+                Toast.makeText(CameraActivity.this, "Image Saved", Toast.LENGTH_LONG).show();
             }
         }
 
