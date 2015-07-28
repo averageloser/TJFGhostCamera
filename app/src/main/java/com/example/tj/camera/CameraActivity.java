@@ -12,6 +12,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.HandlerThread;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.TextureView;
@@ -165,9 +166,13 @@ public class CameraActivity extends AppCompatActivity implements TextureView.Sur
                 try {
                     //try to keep the file size small.
                     image.compress(Bitmap.CompressFormat.JPEG, 25, new BufferedOutputStream(new FileOutputStream(pictureSaved)));
+
+
                 } catch (IOException e) {
                     Log.e("error saving image", e.getMessage());
                 }
+
+                //MediaStore.Images.Media.insertImage(getContentResolver(), image, "Boo", "ghost cam boo");
 
                 return null;
             }
